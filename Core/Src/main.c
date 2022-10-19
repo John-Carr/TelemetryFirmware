@@ -41,7 +41,7 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-CAN_HandleTypeDef hcan;
+ CAN_HandleTypeDef hcan;
 
 SPI_HandleTypeDef hspi2;
 
@@ -95,12 +95,13 @@ int main(void)
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
 
+
   /* USER CODE BEGIN Init */
 
   /* USER CODE END Init */
 
   /* Configure the system clock */
-  SystemClock_Config();
+  //SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
 
@@ -108,7 +109,7 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_CAN_Init();
+//  MX_CAN_Init();
   MX_USART2_UART_Init();
   MX_USB_PCD_Init();
   MX_SPI2_Init();
@@ -139,6 +140,7 @@ int main(void)
   /* Create the thread(s) */
   /* creation of defaultTask */
   defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
+
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -184,6 +186,7 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+
   /** Initializes the CPU, AHB and APB buses clocks
   */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
@@ -511,4 +514,3 @@ void assert_failed(uint8_t *file, uint32_t line)
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
-

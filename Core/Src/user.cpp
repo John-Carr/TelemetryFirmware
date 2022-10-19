@@ -109,7 +109,7 @@ void SendCanMsgs()
 {
   // Request Mitsuba Data
   Motor_Tx.SetRequestAllFrames();
-  CANController.Send(&Motor_Tx);
+//  CANController.Send(&Motor_Tx);
 }
 
 void SendTelemetryData()
